@@ -7,25 +7,23 @@
 int main()
 {
     setlocale(LC_ALL, "");
-    int SIZE = 5;
-    int *grades = new int [SIZE];
-    double erageGrades = 0;
+   
+    int *grades = new int [5];
+    double *erageGrades = new double(0);
     
     
     ////////////////////////////////////////////////
     std::cout << "Введите пять оценок студента!" << std::endl;
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < 5; i++)
     {
         std::cout << "Оценка # " << i+1 << ": ";
         std::cin >> grades[i];
     }
 
-    
-
     ////////////////////////////////////////////////
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < 5; i++)
     {
-        erageGrades += grades[i];
+        *erageGrades = *erageGrades + grades[i];
     }
 
     ////////////////////////////////////////////////
@@ -33,16 +31,20 @@ int main()
     grades = nullptr;
     ////////////////////////////////////////////////
     
-    if (erageGrades / SIZE > 4)
+    if ((*erageGrades) / 5 >= 4)
     {
-        std::cout << "\nСредний бал студента: " << erageGrades / SIZE << std::endl << 
+        std::cout << "\nСредний бал студента: " << (*erageGrades) / 5 << std::endl << 
             "Студент получает допуск" << std::endl;
     }
     else
     {
-        std::cout << "\nСредний бал студента: " << erageGrades / SIZE << std::endl << 
+        std::cout << "\nСредний бал студента: " << (*erageGrades) / 5 << std::endl << 
             "Студент не получает допуск" << std::endl;
     }
+
+    delete erageGrades;
+    erageGrades = nullptr;
+
     return 0;
         
 }
